@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/main"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#FFF8E1">
+
+    <!-- App Logo or Video -->
+    <VideoView
+        android:id="@+id/appVideo"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="40dp" />
+
+    <!-- App Title -->
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food Recipe App"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FF5722"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Welcome Message -->
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discover and Cook Amazing Recipes!"
+        android:textSize="16sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="40dp" />
+
+    <!-- Button to Navigate -->
+    <Button
+        android:id="@+id/exploreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explore Recipes"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"
+        android:padding="10dp" />
+</LinearLayout>

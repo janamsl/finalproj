@@ -1,0 +1,94 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#FFF8E1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Food Image -->
+        <ImageView
+            android:id="@+id/foodImageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="Food Image"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:background="#FFF" />
+
+        <!-- Food Name Text -->
+        <TextView
+            android:id="@+id/foodNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food Name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Description Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/descriptionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/foodDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Here is the detailed description of the food item."
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:lineSpacingExtra="4dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- Ingredients Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/ingredientsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FF5722"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/foodIngredientsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="- Ingredient 1\n- Ingredient 2\n- Ingredient 3"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
