@@ -30,7 +30,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -51,50 +50,37 @@ public class Login extends AppCompatActivity {
 
             progressBar.setVisibility(android.view.View.VISIBLE);
 
-            // Firebase Login
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, task -> {
-                        progressBar.setVisibility(android.view.View.GONE);
-
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                // Check if user is Admin or regular user
-                                checkUserRole(user);
-                            }
-                        } else {
-                            Toast.makeText(Login.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
+                progressBar.setVisibility(android.view.View.GONE);
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    if (user != null) checkUserRole(user);
+                } else {
+                    Toast.makeText(Login.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
         btnSignUp.setOnClickListener(v -> {
-            // Redirect to SignUpActivity
             Intent signUpIntent = new Intent(Login.this, SignUp.class);
             startActivity(signUpIntent);
         });
     }
 
-    // Method to check if the user is an Admin or User
     private void checkUserRole(FirebaseUser user) {
         String userId = user.getUid();
-
-        // Check if the user is an Admin by querying the "users" node in the Firebase database
         mDatabase.child("users").child(userId).child("role").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String role = dataSnapshot.getValue(String.class);
-
-                // If the role is "admin", open Admin Activity
                 if (role != null && role.equals("admin")) {
                     Intent adminIntent = new Intent(Login.this, Admin.class);
                     startActivity(adminIntent);
-                    finish(); // Close the LoginActivity
+                    finish();
                 } else {
-                    // If the role is not "admin", open Main Activity for the user
                     Intent mainIntent = new Intent(Login.this, MainActivity.class);
                     startActivity(mainIntent);
-                    finish(); // Close the LoginActivity
+                    finish();
                 }
             }
 
